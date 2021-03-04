@@ -1,24 +1,12 @@
 # pydp-cli
-A cli wrapping [OpenMined's PYDP](https://github.com/OpenMined/PyDP).
-
-Takes as input:
- *  A set of CSV files (presumes the same columns for all files)
- *  Columns to operate over
- *  Aggregations to run
- *  Epsilon (Differential Privacy parameter)
- *  Output file
-
-# Dependencies
-
- *  Python3
- *  python-dp
- *  Pandas
+A technology demonstration cli wrapping
+[OpenMined's PYDP](https://github.com/OpenMined/PyDP).
 
 # Example Usage
 
 ```bash
-python3 src/pydp-cli.py -h
-usage: pydp-cli.py [-h] -i INPUT -c COLUMN [--id ID] -a {mean,sum}
+pydp-cli -h
+usage: pydp-cli [-h] -i INPUT -c COLUMN [--id ID] -a {mean,sum}
                    [-e EPSILON] [-o OUTPUT]
 
 Perform a differentially private aggregation across specified data.
@@ -41,7 +29,33 @@ optional arguments:
 ```
 
 ```bash
-> python3 src/pydp-cli.py -i $INPUT -c words -a mean -a sum -e 5
+pydp-cli -i $INPUT -c $COLUMN -a mean -a sum -e 5
+```
+
+# Build
+To build a local python package (tested on Mac OS 10.2).
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+# Virtual env bundled with MacOS is faulty.
+pip install --upgrade virtualenv
+pip install --upgrade build
+python3 -m build
+# This will output a Tar file in dist/pydp-cli-*.tar.gz
+deactivate
+```
+
+# Install
+Install from a local tar file.
+
+```bash
+# Optionally install in local virtual env.
+source venv/bin/activate
+pip install dist/pydp-cli-*.tar.gz
+# Reload the virtual environment to make the tool available.
+deactivate; source venv/bin/activate
 ```
 
 # Future work
@@ -49,3 +63,8 @@ optional arguments:
  *  Keep track of privacy budget used.
  *  More sophisticated querying
  *  More sophisticated inputs (protobufs)
+
+# Disclaimer
+This tool is an experimental technology demonstration only. It has not been
+rigerously tested, code reviewed or audited. Do not use to protect people's
+privacy in production applications.
