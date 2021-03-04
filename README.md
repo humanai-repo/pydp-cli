@@ -32,6 +32,14 @@ optional arguments:
 pydp-cli -i $INPUT -c $COLUMN -a mean -a sum -e 5
 ```
 
+To run from Docker, launch the docker image in interactive mode with the
+directory containing input data mounted in the container.
+```bash
+docker run -it -v $ABSOLUTE_PATH_INPUT_DIR:$CONTAINER_INPUT --name pydp-cli pydp-cli
+```
+
+Then run the commands as above.
+
 # Build
 To build a local python package (tested on Mac OS 10.2).
 
@@ -45,6 +53,11 @@ pip install --upgrade build
 python3 -m build
 # This will output a Tar file in dist/pydp-cli-*.tar.gz
 deactivate
+```
+
+To wrap the local python package in into a Docker image run
+```bash
+docker build --tag pydp-cli .
 ```
 
 # Install
