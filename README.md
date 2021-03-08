@@ -60,6 +60,25 @@ To wrap the local python package in into a Docker image run
 docker build --tag pydp-cli .
 ```
 
+[comment]: # (TODO: Trim down unnecessary steps)
+
+To push to docker hub
+```bash
+# List running docker images to get the Container ID
+docker container ls
+
+docker container commit $CONTAINER_ID pydp-cli:latest
+
+# List runing docker image to get the Image ID
+docker container ls
+
+docker tag $IMAGE_ID $DOCKERHUB_USERNAME/pydp-cli
+
+docker login --username=$DOCKERHUB_USERNAME
+
+docker push $DOCKERHUB_USERNAME/pydp-cli
+```
+
 # Install
 Install from a local tar file.
 
