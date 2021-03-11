@@ -1,6 +1,5 @@
 import sys
 import argparse
-import csv
 import pandas as pd
 from pydp.algorithms.laplacian import BoundedSum, BoundedMean, Count, Max
 
