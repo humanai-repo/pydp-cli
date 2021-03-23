@@ -2,7 +2,7 @@
 A technology demonstration cli wrapping
 [OpenMined's PYDP](https://github.com/OpenMined/PyDP).
 
-# Example Usage
+## Example Usage
 
 ```bash
 pydp-cli -h
@@ -40,7 +40,7 @@ docker run -it -v $ABSOLUTE_PATH_INPUT_DIR:$CONTAINER_INPUT --name pydp-cli pydp
 
 Then run the commands as above.
 
-# Build
+## Build
 To build a local python package (tested on Mac OS 10.2).
 
 ```bash
@@ -60,26 +60,19 @@ To wrap the local python package in into a Docker image run
 docker build --tag pydp-cli .
 ```
 
-[comment]: # (TODO: Trim down unnecessary steps)
-
 To push to docker hub
 ```bash
-# List running docker images to get the Container ID
-docker container ls
-
-docker container commit $CONTAINER_ID pydp-cli:latest
-
 # List runing docker image to get the Image ID
-docker container ls
+docker images
 
-docker tag $IMAGE_ID $DOCKERHUB_USERNAME/pydp-cli
+docker tag $IMAGE_ID $DOCKERHUB_USERNAME/pydp-cli:latest
 
 docker login --username=$DOCKERHUB_USERNAME
 
 docker push $DOCKERHUB_USERNAME/pydp-cli
 ```
 
-# Install
+## Install
 Install from a local tar file.
 
 ```bash
@@ -90,13 +83,13 @@ pip install dist/pydp-cli-*.tar.gz
 deactivate; source venv/bin/activate
 ```
 
-# Future work
+## Future work
 
  *  Keep track of privacy budget used.
- *  More sophisticated querying
- *  More sophisticated inputs (protobufs)
+ *  More sophisticated querying.
+ *  More sophisticated inputs.
 
-# Disclaimer
+## Disclaimer
 This tool is an experimental technology demonstration only. It has not been
 rigerously tested, code reviewed or audited. Do not use to protect people's
 privacy in production applications.
